@@ -2,12 +2,58 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Face Recognition Attendance System</title>
+    <link rel="stylesheet" href="/static/style.css">
   </head>
   <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+    <header>
+      <h1>Face Recognition Attendance</h1>
+    </header>
+
+    <main>
+      <section class="panel">
+        <h2>Students</h2>
+        <form id="add-student-form">
+          <input name="student_id" placeholder="Student ID" required />
+          <input name="name" placeholder="Name" required />
+          <input name="email" placeholder="Email" required />
+          <input name="cgpa" placeholder="CGPA" />
+          <input name="advisor" placeholder="Advisor" />
+          <input name="address" placeholder="Address" />
+          <button type="submit">Add Student</button>
+        </form>
+        <div id="students-list"></div>
+      </section>
+
+      <section class="panel">
+        <h2>Attendance</h2>
+        <div class="controls">
+          <input id="course" placeholder="Course" />
+          <input id="date" type="date" />
+          <input id="time" type="time" />
+        </div>
+        <form id="recognize-form">
+          <input type="file" id="image" accept="image/*" required />
+          <button type="submit">Recognize & Record</button>
+        </form>
+        <div class="actions">
+          <button id="refresh-attendance">Refresh Attendance</button>
+          <a id="export-link" href="#" download>Export CSV</a>
+        </div>
+        <div id="attendance-table"></div>
+      </section>
+
+      <section class="panel">
+        <h2>Training</h2>
+        <div class="actions">
+          <button id="train-btn">Train Classifier</button>
+          <button id="stats-btn">Refresh Stats</button>
+        </div>
+        <pre id="train-stats" style="white-space: pre-wrap"></pre>
+      </section>
+    </main>
+
+    <script src="/static/app.js"></script>
   </body>
 </html>
